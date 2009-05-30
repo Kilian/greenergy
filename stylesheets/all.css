@@ -1,7 +1,7 @@
 @charset "utf-8";
 /* SenCSS 0.6 */
 html,body,div,span,applet,object,iframe,pre,abbr,address,cite,code,del,dfn,em,img,ins,kbd,q,strong,tt,var,dl,dt,dd,blockquote,fieldset,form,i,b,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;vertical-align:baseline}
-body{background:#fff;color:#000;font:75%/1.5em Arial, Helvetica, "Liberation sans", "Bitstream Vera Sans", sans-serif;position:relative}
+body{background:#fff;color:#000;font:75%/1.5em "Century Gothic", Arial, Helvetica, "Liberation sans", "Bitstream Vera Sans", sans-serif;position:relative}
 textarea{font:100%/1.5em Arial, Helvetica, "Liberation sans", "Bitstream Vera Sans", sans-serif}
 blockquote,q{quotes:none}
 blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}
@@ -87,8 +87,8 @@ form legend{font-size:1.1666em;font-weight:700;left:0;margin:0;padding:0}
 }
 
 .wireframe .topbar {
-  border-bottom:1px solid black;
-  height:40px;
+  background:#dbdbdb;
+  height:50px;
   width:100%;
   display:block;
   position:absolute;
@@ -104,40 +104,31 @@ form legend{font-size:1.1666em;font-weight:700;left:0;margin:0;padding:0}
   width:100%;
   padding-top:41px;
  }
-.wireframe .topbar .info {
-  background:#eee;
-  text-align:center;
-  padding:5px 10px 0;
-  font-style:italic;
-  float:left;
-  margin:0px 20px 5px 10px;
-  height:35px;
-}
+
 .wireframe .topbar .weather {
-  background:#eee;
-  text-align:center;
-  padding:5px 10px 0;
-  margin:0px 45px 5px 5px;
-  position:relative;
-  float:left;
-  width:20px;
-  height:35px;
-}
-.wireframe .topbar .weather .windspeed {
-  background:#eee;
-  width:50px;
-  font-size:0.8em;
+  width:65px;
+  height:44px;
   position:absolute;
-  bottom:0;
-  right:-25px;
+  left:220px;
+  top:14px;
+
+}
+.wireframe .topbar .sunny {background:url(../images/sunny.png) no-repeat 0 0;}
+.wireframe .topbar .degree {
+  position:absolute;
+  right:-2px;
+  bottom:-4px;
+  font-size:18px;
+  font-weight:bold;
 }
 .wireframe .topbar .datetime {
-  background:#eee;
   width:200px;
-  position:relative;
-  float:left;
-  height:40px;
+  position:absolute;
+  left:18px;
+  top:24px;
   margin:0px 20px 0px 0px;
+  font-size:14px;
+  font-weight:bold;
 }
 .wireframe .topbar .datetime .time {
   font-size:40px;
@@ -150,40 +141,72 @@ form legend{font-size:1.1666em;font-weight:700;left:0;margin:0;padding:0}
   float:left;
   margin-left:5px;
 }
-.wireframe .topbar .barchart {
-  background:#eee;
+.wireframe .seperator {
   position:absolute;
-  right:10px;
+  height:50px;
   top:10px;
+  left:300px;
+  border-left:1px solid #999;
+  border-right:1px solid #eee;
+  border-top:1px solid #999;
+  border-bottom:1px solid #999;
+}
+.wireframe .thermo {
+  position:absolute;
+  top:10px;
+  left:320px;
+  height:50px;
+  width:35px;
+  font-size:18px;
+  background:url(../images/thermo.png) no-repeat 0 0;
+}
+.wireframe .thermo .degree {bottom:0;right:-8px;}
+.wireframe .topbar .info {
+  background:url(../images/info.png) no-repeat 0 0;
+  position:absolute;
+  left:395px;
+  top:20px;
+  width:42px;
+  height:43px;
+}
+.wireframe .topbar .barchart {
+  position:absolute;
+  right:18px;
+  top:25px;
   padding:5px;
   height:30px;
-  width:200px;
+  width:320px;
 }
 .wireframe .topbar .barchart div {
   float:left;
   height:30px;
   background:#ff0;
   display:block;
+  color:#fff;
+  font-size:16px;
+  font-weight:bold;
+  text-transform:uppercase;
+  line-height:30px;
+  text-align:center;
 }
 .wireframe .topbar .barchart .solar {
-  background:#ffa;
+  background:#e2b974;
   -moz-border-radius-topleft:5px;
   -moz-border-radius-bottomleft:5px;
   -webkit-border-top-left-radius:5px;
   -webkit-border-bottom-left-radius:5px;
 }
 .wireframe .topbar .barchart .wind {
-  background:#afa;
+  background:#4a7fb9;
 }
 .wireframe .topbar .barchart .other {
-  background:#aaf;
+  background:#db5050;
   -moz-border-radius-topright:5px;
   -moz-border-radius-bottomright:5px;
   -webkit-border-top-right-radius:5px;
   -webkit-border-bottom-right-radius:5px;
 }
 .wireframe .topbar .barchart div span {
-  display:none;
 }
 .wireframe .main .slider {
   position:absolute;
@@ -202,23 +225,25 @@ form legend{font-size:1.1666em;font-weight:700;left:0;margin:0;padding:0}
   left:50px;
   top: 110px;
   padding:10px;
-  -moz-border-radius:10px;
-  -webkit-border-radius:10px;
-  background:#eee;
-  opacity:0.8;
 }
 .wireframe .main h1 a {
   text-decoration:none;
   color:inherit;
   font-size:0.8em;
 }
-.wireframe .main h1 a span {font-size:1.2em;}
+.wireframe .main h1 a span {
+  font-size:1.2em;
+  background:#e2b974;
+  -moz-border-radius:5px;
+  -webkit-border-radius:5px;
+  padding:4px 5px;
+}
 .wireframe .main #maingraph {
   background:#fff;
   padding:50px 0;
   width:800px;
   position:absolute;
-  top:61px;
+  top:100px;
   left:0;
-  height: 319px;
+  height: 250px;
 

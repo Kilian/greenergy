@@ -11,43 +11,51 @@
 </head>
 <body>
   <div class="screen wireframe">
+
     <div class="main">
-      <div id="maingraph"><!-- add kickass graph --></div>
-      <h1><a href="#" class="toggle">Total: <span>&euro; 40</span></a></h1>
+      <div id="maingraph"></div>
+      <h1><a href="#" class="toggle">Total: <span>&euro;40,- | &#x21e9;</span></a></h1>
       <div class="slider">slider</div>
     </div><!-- main -->
 
     <div class="bar topbar">
-      <div class="info" title="settings">i</div>
-      <div class="weather sunny">
-        <span class="windspeed">10 km/h</span>
-      </div>
-
       <div class="datetime">
         <span class="time">11:40</span>
-        <span class="date">maandag<br />17 mei 2009</span>
+        <span class="date">maandag<br />17 mei</span>
+      </div>
+      <div class="weather sunny">
+        <span class="degree">21&deg;</span>
       </div>
 
+      <div class="seperator"></div>
+
+      <div class="thermo">
+        <span class="degree">19&deg;</span>
+      </div>
+      <div class="info"></div>
+
       <div class="barchart">
-        <div class="solar" style="width:10%"><span>Solar</span></div>
-        <div class="wind" style="width:70%"><span>Wind</span></div>
-        <div class="other" style="width:20%"><span>Other</span></div>
+        <div class="solar" style="width:45%"><span>Zon</span></div>
+        <div class="wind" style="width:35%"><span>Wind</span></div>
+        <div class="other" style="width:20%"><span>HR</span></div>
       </div>
     </div><!-- bar -->
   </div>
+
   <script>
 var linegraph3 =
   new Ico.LineGraph($('maingraph'),
     {
-      firefox: [30, 35, 31, 30, 35, 28, 30, 35, 32],
-      chrome:  [15, 10,  9, 13, 16, 12, 10,  5, 10]
+      up:  [10,12,14,10, 0, 0, 0, 0, 0, 5, 6, 0, 0, 0, 10, 12],
+      down:[ 0, 0, 0, 0, 0,-7,-8,-9, 0, 0, 0, 0,-3, 0,  0,  0],
+      zero:[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
     },
     {
       curve_amount: 10,
-      colours: { firefox: '#0f0', chrome: '#f00'},
-      labels: ['6th April', '', '', '', '', '', '','','6th May'],
-      meanline: true,
-      grid: true,
+      colours: { up: '#00ff00',down:'#ff0000',zero:'#000000'},
+      labels: ['','','','','','','','','','','','','','','',''],
+      meanline: false,
+      grid: true
     });
    </script>
 </body>
