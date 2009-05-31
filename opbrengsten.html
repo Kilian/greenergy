@@ -14,9 +14,9 @@
 
     <div class="main">
       <div id="maingraph"></div>
-      <h1><a href="#" class="toggle">Opbrengst: <span>&euro;40,-</span></a></h1>
-      <h2>Opgewekt: <span>&euro;300,-</span><br />
-      Gebruikt: <span>&euro;260,-</span><br />
+      <h1><a href="#" class="toggle">Totaal: <span>&euro;300,-</span></a></h1>
+      <h2>Zon: <span>&euro;200,-</span><br />
+      Wind: <span>&euro;100,-</span><br />
       </h2>
       <div class="slider">
           <div class="slider-width"></div>
@@ -42,29 +42,43 @@
       <div class="info"></div>
 
       <div class="barchart">
-        <div class="solar" style="width:45%"><span>Zon</span></div>
-        <div class="wind" style="width:35%"><span>Wind</span></div>
-        <div class="other" style="width:20%"><span>HR</span></div>
+        <div id="sparkline" style="background:none;"></div>
       </div>
     </div><!-- bar -->
   </div>
 
   <script>
-var linegraph3 =
-  new Ico.LineGraph($('maingraph'),
+var data = [
+    [10,10,10,10,10,10,10,10,10,10,10,10,10,10,10],
+    [10, 9, 6, 5, 1, 4, 5, 7, 8, 12,14,16,18,19,25],
+    [30, 32, 34, 35, 36, 37, 36, 33, 34,33,30,25,22,18,16],
+    ];
+
+function makeconsecutive(data){
+  for (var i=1;i<data.length;i++) {
+    for(var j=0;j<15; j++) {
+     data[i][j] += data[i-1][j] + 2;
+    }
+  }
+  return data;
+}
+data = makeconsecutive(data);
+
+  var linegraph3 =
+  new Ico.StackGraph($('maingraph'),
     {
-      up:  [10,12,14,10, 0, 0, 0, 0, 0, 5, 6, 0, 0, 0, 10, 12],
-      down:[ 0, 0, 0, 0, 0,-7,-8,-9, 0, 0, 0, 0,-3, 0,  0,  0],
-      zero:[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+      zon: data[2],
+      wind:data[1],
+      hr:data[0]
     },
     {
       curve_amount: 10,
-      colours: { up: '#00ff00',down:'#ff0000',zero:'#000000'},
-      labels: ['20 mei','','','','','','','','','','','','','','','27 mei'],
+      colours: { zon: '#e2b974',wind:'#4a7fb9',hr:'#db5050'},
+      labels: ['12:00','','13:00','','14:00','','15:00','','16:00','','17:00','','18:00','','19:00'],
       meanline: false,
-      show_vertical_labels:false,
       grid: true
     });
+var sparkline = new Ico.SparkLine($('sparkline'), [10,12,14,10, 0,7,8,9, 0, 5, 6, 0, 3, 0, 10, 12], {width: 320, height: 40,colour: "#000000"  });
    </script>
 </body>
 

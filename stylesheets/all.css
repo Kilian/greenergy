@@ -217,6 +217,37 @@ form legend{font-size:1.1666em;font-weight:700;left:0;margin:0;padding:0}
   width:700px;
   height:80px;
   text-align:center;
+  -moz-border-radius-topright:10px;
+  -moz-border-radius-topleft:10px;
+  -webkit-border-top-left-radius:10px;
+  -webkit-border-top-right-radius:10px;
+  overflow:hidden;
+  display:none;
+}
+.wireframe .main .slider .slider-width {
+  width:500px;
+  background:#333;
+  height:10px;
+  border-width:2px;
+  border-color:#333;
+  border-style:solid;
+  border-top:10px solid #ccc;
+  border-bottom:10px solid #ccc;
+  margin:25px auto;
+  position:relative;
+}
+.wireframe .main .slider .slider-left,
+.wireframe .main .slider .slider-right {
+  width:20px;
+  height:40px;
+  background:#000;
+  position:absolute;
+  top:20px;
+  left:100px;
+  display:block;
+}
+.wireframe .main .slider .slider-right{
+  left:400px;
 }
 .wireframe .main h1 {
   position:absolute;
@@ -254,5 +285,5 @@ form legend{font-size:1.1666em;font-weight:700;left:0;margin:0;padding:0}
   position:absolute;
   top:100px;
   left:0;
-  height: 250px;
+  height: 350px;
 
