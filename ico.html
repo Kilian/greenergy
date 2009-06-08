@@ -1,0 +1,172 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+  <head>
+    <title>Additional ICO charts</title>
+    <script src="scripts/prototype.js" type="text/javascript" charset="utf-8"></script>
+    <script src="scripts/raphael.js" type="text/javascript" charset="utf-8"></script>
+    <script src="scripts/ico.js" type="text/javascript" charset="utf-8"></script>
+    <style type="text/css" media="screen">
+html, body, div, ul, ol, li, dl, dt, dd, h1, h2, h3, h4, h5, h6, pre, form, p, blockquote, fieldset, input { margin: 0; padding: 0; }
+h1, h2, h3, h4, h5, h6, pre, code, address, caption, cite, code, em, strong, th { font-size: 1em; font-weight: normal; font-style: normal; }
+fieldset, img { border: none; }
+body { font-family: "Lucida Grande", Helvetica, sans-serif; font-size: 12px; background-color: #fff; padding: 0; margin: 10px 5%; color: #000 }
+h1, h2 { font-size: 2em; margin: 0.5em 0; }
+
+p { margin: 1em 0; }
+p.example { color: #555; }
+
+.stackgraph {width: 610px; height: 240px; background-color: #eee; margin-bottom: 20px;overflow:hidden; }
+.stackgraph div,
+.linegraph div,
+#barchart_5 div {overflow:hidden;}
+.linegraph{width: 610px; height: 200px; background-color: #fff; margin-bottom: 20px; }
+#bargraph_5{height:200px;}
+
+.datalabelelem {position:absolute;width:120px;height:30px;line-height:30px;text-align:center;font-size:16px;-moz-border-radius:5px;opacity:0.9;border:2px solid #333;background:#fff;margin-left:-135px;margin-top:-45px;z-index:99;}
+
+#datalabelelem-linegraph{background: #000;color:#fff}
+#datalabelelem-bargraph_5{height:auto;line-height:1.5em;font-size:10px;font-style:italic;}
+
+#linegraph2,
+#linegraph3 {
+    width:288px;
+    height:152px;
+    background:#fff;
+    border:1px solid #ddd;
+    float:left;
+    margin-right:20px;
+}
+#datalabelelem-linegraph2,
+#datalabelelem-linegraph3 {margin-left:-125px;margin-top:-35px;}
+    </style>
+  </head>
+  <body>
+    <h2>Categories stacked area chart</h2>
+    <div id="stackgraph" class="stackgraph"></div>
+    <h2>Todays software line chart</h2>
+    <div id="linegraph" class="linegraph"></div>
+    <h2>Horizontal bar graph</h2>
+    <div id="bargraph_5" class="linegraph"></div>
+
+    <h2>Reach graph test</h2>
+    <div id="linegraph2" class="linegraph"></div>
+    <div id="linegraph3" class="linegraph"></div>
+
+    <img id="watermark" src="logo.png" alt="" style="display:none;">
+
+    <script type="text/javascript">
+
+var data = [
+    [30, 5, 1, 10, 15, 18, 20, 25, 12],
+    [10, 9, 3, 50, 1, 10, 5, 33, 33],
+    [10, 19, 51, 3, 1, 10, 5, 33, 33],
+    [5, 4, 10, 1, 30, 11, 33, 12, 22],
+    [10, 9, 3, 50, 1, 10, 5, 33, 33]
+    ];
+
+function makeconsecutive(data){
+  for (var i=1;i<data.length;i++) {
+    for(var j=0;j<9; j++) {
+     data[i][j] += data[i-1][j] + 2;
+    }
+  }
+  return data;
+}
+data = makeconsecutive(data);
+// the above needs to be done server side, so we can keep clean javascript on the client
+// order: highest/last needs to be added into Ico first, due to stacking order
+var watermark = document.getElementById("watermark");
+var stackgraph =
+  new Ico.StackGraph($('stackgraph'),
+    {
+    one: data[4],
+    two: data[3],
+    three: data[2],
+    four: data[1],
+    five: data[0]
+    },
+    {
+      labels: ['last month', 'last week', '24 hours ago', '23 hours ago', '22 hours ago', '21 hours ago', 'seven', 'eight', 'nine'],
+      meanline: false,
+      markers: 'circle',
+      grid: true,
+      plot_padding: 0,
+      show_vertical_labels: true,
+      curve_amount: 20,
+      background_colour: "#eeeeee",
+      draw_axis: false,
+      colours: {
+        one: '#4b80b6',
+        two: '#79af7b',
+        three: '#e2ba74',
+        four: '#dc504f',
+        five: '#a267a7'
+      },
+      datalabels: {one:'Internet', two:'Games', three:'Development', four:'Audio', five:'System Tools'},
+      watermark: "wakoopa"
+});
+var linegraph =
+  new Ico.LineGraph($('linegraph'),
+    {
+      one: [30, 5, 1, 10, 15, 18, 20, 25, 1],
+      two: [10, 9, 3, 30, 1, 10, 5, 33, 33],
+      three: ["", "", "", 1, 30, 11, 33, 12, 22]
+    },
+    {
+      markers: 'circle',
+      curve_amount: 20,
+      colours: { one: '#4b80b6', two: '#79af7b', three: '#e2ba74'},
+      labels: ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'],
+      meanline: false,
+      grid: true,
+      start_at_zero: false,
+      datalabels: {one:'Firefox', two:'G-edit', three:'Pidgin'},
+    });
+var linegraph2 =
+  new Ico.LineGraph($('linegraph2'),
+    {
+      firefox: [30, 35, 31, 30, 35, 28, 30, 35, 32]
+    },
+    {
+      curve_amount: 10,
+      colours: { firefox: '#a267a7'},
+      labels: ['6th April', '', '', '', '20th April', '', '','6th May'],
+      meanline: false,
+      grid: true,
+      datalabels: {firefox:'Firefox'},
+      watermark: "wakoopa",
+    });
+var linegraph3 =
+  new Ico.LineGraph($('linegraph3'),
+    {
+      firefox: [30, 35, 31, 30, 35, 28, 30, 35, 32],
+      chrome:  [15, 10,  9, 13, 16, 12, 10,  5, 10]
+    },
+    {
+      curve_amount: 10,
+      colours: { firefox: '#a267a7', chrome: '#4b80b6'},
+      labels: ['6th April', '', '', '', '20th April', '', '','6th May'],
+      meanline: false,
+      grid: true,
+      datalabels: {firefox:'Firefox', chrome:'Google Chrome'},
+      watermark: "wakoopa",
+      watermark_orientation: "middle"
+    });
+var bargraph_5 =
+  new Ico.HorizontalBarGraph($('bargraph_5'),
+    [16,12,15,21,26,33],
+    {
+       font_size: 14,
+       labels: ['...and more', 'Skype', 'Thunderbird', 'Wine', 'G-edit', 'Firefox'],
+       colour: '#a267a7',
+       grid:true,
+       percentages:true,
+       bargraph_firstcolour:"#666666",
+       datalabels: {one:['Used for 18 hours, 53 minutes and 21 seconds', 'Used for 15 hours, 53 minutes and 21 seconds', 'Used for 15 hours, 53 minutes and 21 seconds', 'Used for 15 hours, 53 minutes and 21 seconds', 'Used for 13 hours, 53 minutes and 21 seconds', 'Used for 15 hours, 53 minutes and 21 seconds']},
+      watermark: "wakoopa"
+    });
+
+    </script>
+  </body>
+</html>
+

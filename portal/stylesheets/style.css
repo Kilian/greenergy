@@ -1,0 +1,165 @@
+@charset "utf-8";
+/* SenCSS 0.6 */
+html{height:100%;}
+html,body,div,span,applet,object,iframe,pre,abbr,address,cite,code,del,dfn,em,img,ins,kbd,q,strong,tt,var,dl,dt,dd,blockquote,fieldset,form,i,b,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;vertical-align:baseline}
+body{height:100%;background:#e0e0e0;color:#000;font:75%/1.5em "Century Gothic",Arial, Helvetica, "Liberation sans", "Bitstream Vera Sans", sans-serif;position:relative}
+textarea{font:100%/1.5em Arial, Helvetica, "Liberation sans", "Bitstream Vera Sans", sans-serif}
+blockquote,q{quotes:none}
+blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}
+:focus{outline:1px dotted}
+a{text-decoration:underline}
+a:hover,a:focus{text-decoration:none}
+abbr,acronym{border-bottom:1px dotted;cursor:help;font-variant:small-caps}
+address,cite,em,i{font-style:italic}
+blockquote p{margin:0 1.5em 1.5em;padding:0.75em}
+code,kbd,tt{font-family:"Courier New", Courier, monospace;line-height:1;*line-height:1.5}
+del{text-decoration:line-through}
+dfn{border-bottom:1px dashed;font-style:italic}
+dl{margin:0 0 1.5em}
+dt{font-weight:700}
+dd{padding-left:1.5em}
+h1{font-size:2em;font-weight:700;margin:0 0 0.75em}
+h2{font-size:1.5em;margin:0 0 1em}
+h3{font-size:1.1666em;margin:0 0 1.285em}
+h4{font-size:1em;margin:0 0 1.5em}
+h5{font-size:0.8333em;margin:0 0 1.8em}
+h6{font-size:0.666em;margin:0 0 2.25em}
+img{display:inline-block;vertical-align:bottom}
+ins{text-decoration:overline}
+ol{list-style:inside decimal}
+p{font-weight:300;margin:0 0 1.5em}
+pre{font-family:"Courier New", Courier, monospace;margin:0 0 1.5em}
+sub{top:0.4em;font-size:0.85em;line-height:1;position:relative;vertical-align:baseline}
+sup{font-size:0.85em;line-height:1;position:relative;bottom:0.5em;vertical-align:baseline}
+strong,b{font-weight:700}
+ul{list-style:inside disc}
+ul,ol{margin:0 0 1.5em;padding:0}
+li ul,li ol{margin:0}
+li li{padding-left:1.5em}
+table{border-collapse:collapse;border-spacing:0;margin:0 0 1.5em;padding:0}
+caption{font-style:italic;text-align:left}
+tr.alt td{background:#eee}
+td{border:1px solid #000;padding:0.333em;vertical-align:middle}
+th{font-weight:700;padding:0.333em;vertical-align:middle}
+.amp{font-family:Baskerville, "Goudy Old Style", Palatino, "Book Antiqua", "URW Chancery L", Gentium, serif;font-style:italic}
+.aside-left{clear:left;float:left;margin:0 1.5em 0 0}
+.aside-right{clear:right;float:right;margin:0 0 0 1.5em}
+.error{background:#fee;border:1px solid red;margin:1.5em;padding:0.666em;text-align:center}
+.notice{background:#eef;border:1px solid #00f;margin:1.5em;padding:0.666em;text-align:center}
+.success{background:#efe;border:1px solid #0f0;margin:1.5em;padding:0.666em;text-align:center}
+.warning{background:#ffe;border:1px solid #ff0;margin:1.5em;padding:0.666em;text-align:center}
+.quo{font-family:Georgia, Gentium, "Times New Roman", Times, serif}
+.lquo{font-family:Georgia, Gentium, "Times New Roman", Times, serif;margin:0 0 0 -0.55em}\
+
+#wrap {
+  position:relative;
+  width:1000px;
+  margin:auto;
+  background:#ebebeb;
+  overflow:hidden;
+  min-height:100%;
+}
+#header {
+  background:#fff url("../images/headerbg.gif") repeat-x 0 0 ;
+  position:relative;
+  width:100%;
+  height:114px;
+}
+#header h1{  margin:0;}
+#header h1 a {
+  position:absolute;
+  left:0;
+  top:0;
+  width:316px;
+  height:114px;
+  display:block;
+  text-indent:-9999em;
+  background:url("../images/logo.gif") no-repeat 0 0;
+
+}
+#header ul {
+  float:right;
+  margin-right:24px;
+  margin-top:72px;
+  width:494px;
+}
+#header ul li {float:left;display:inline;}
+#header ul li a {
+  font-size:20px;
+  color:#666;
+  text-transform:uppercase;
+  float:left;
+  margin-left:50px;
+  text-decoration:none;
+}
+#header ul li a.active {
+  font-weight:bold;
+  color:#89b78c;
+}
+#main {
+  position:relative;
+}
+.box {
+  margin-top:30px;
+  margin-left:30px;
+  border:5px solid #aaa;
+  background:#fff;
+  -moz-border-radius:10px;
+  -webkit-border-radius:10px;
+  padding:10px;
+  height:250px;
+}
+.widebox {
+ width:560px;
+ float:left;
+ clear:left;
+}
+.smallbox {
+  float:left;
+  clear:none;
+  width:300px;
+}
+.box h2 {
+  font-weight:bold;
+  text-transform:uppercase;
+  color:#666;
+  font-size:18px;
+}
+#linegraph,
+#stackgraph,
+#bargraph {
+  width:560px;
+  height:215px;
+  background:#fff;
+}
+.datalabelelem {position:absolute;width:200px;height:30px;line-height:30px;text-align:center;font-size:16px;-moz-border-radius:5px;opacity:0.9;border:2px solid #333;margin-left:-400px;margin-top:-40px;background:#fff;z-index:99;}
+
+table {
+  padding:8px;
+  background:#ebebeb;
+  width:225px;
+  color:#666;
+  border:0;
+  font-size:16px;
+  margin-bottom:10px;
+}
+table tr {
+  border-bottom:2px solid #666;
+}
+table th {text-align:left;  padding:10px;}
+table td {
+  border:0;
+  width:82px;
+  padding:10px;
+}
+table tr td:first-child,
+table tr th:first-child {
+  border-right:2px solid #666;
+}
+
+.bar {
+  position:absolute;
+  width:17px;
+  height:30px;
+  background:#aaa;
+}

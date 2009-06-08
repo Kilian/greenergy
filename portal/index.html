@@ -1,0 +1,140 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>My greenergy</title>
+  <link rel="stylesheet" href="stylesheets/style.css" type="text/css">
+  <script src="scripts/prototype.js" type="text/javascript"></script>
+  <script src="scripts/raphael.js" type="text/javascript"></script>
+  <script src="scripts/ico.js" type="text/javascript"></script>
+</head>
+<body>
+  <div id="wrap">
+    <div id="header">
+      <h1><a href="#">My Greenergy</a></h1>
+      <ul>
+        <li><a href="#" class="active">Home</a></li>
+        <li><a href="#">Profiel</a></li>
+        <li><a href="#">Tips</a></li>
+        <li><a href="#">Download</a></li>
+      </ul>
+    </div>
+
+    <div class="main">
+      <div class="box widebox">
+        <h2>Totaal</h2>
+        <div id="linegraph"></div>
+      </div>
+      <div class="box smallbox">
+        <h2>Profielen</h2>
+        <table>
+          <tr>
+            <th>Profiel</th>
+            <th>Actief</th>
+          </tr>
+          <tr>
+            <td>Weekend</td>
+            <td id="sparkline"></td>
+          </tr>
+          <tr>
+            <td>werkdag</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Vrije dag</td>
+            <td></td>
+          </tr>
+        </table>
+        <button style="border:5px solid #8ab88d;background:#b6d9b7;-moz-border-radius:10px;-webkit-border-radius:10px;text-transform:uppercase;padding:3px 0;color:#000;">Nieuw Profiel</button>
+        <button style="border:5px solid #da504e;background:#db8989;-moz-border-radius:10px;-webkit-border-radius:10px;text-transform:uppercase;padding:3px 0;color:#000;margin-left:30px;">Wijzig Profielen</button>
+      </div>
+
+      <div class="box widebox">
+        <h2>Opbrengst</h2>
+        <div id="stackgraph"></div>
+      </div>
+
+      <div class="box smallbox">
+        <img src="images/tips.gif" alt="" />
+      </div>
+
+      <div class="box widebox">
+        <h2>Verbruik</h2>
+        <div id="bargraph"></div>
+      </div>
+
+      <div class="bar" style="left:522px;top:424px;"></div>
+      <div class="bar" style="left:522px;top:734px;"></div>
+      <div class="bar" style="left:620px;top:520px;width:30px;height:17px;"></div>
+    </div>
+  </div>
+
+
+  <script>
+var linegraph3 =
+  new Ico.LineGraph($('linegraph'),
+    {
+      up:  [10,12,14,10, 0, 0, 0, 0, 0, 5, 6, 0, 0, 0, 10, 12],
+      down:[ 0, 0, 0, 0, 0,-7,-8,-9, 0, 0, 0, 0,-3, 0,  0,  0],
+      zero:[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+    },
+    {
+      curve_amount: 10,
+      colours: { up: '#00ff00',down:'#ff0000',zero:'#000000'},
+      labels: ['20 mei','','','','','','','','','','','','','','','27 mei'],
+      meanline: false,
+      show_vertical_labels:true,
+      vertical_label_unit:"€",
+      grid: true,
+      datalabels: {up:"Totaal stoomverbruik",down:"Totaal stoomverbruik", zero:"Totaal stroomverbruik"}
+    });
+var data = [
+    [10,10,10,10,10,10,10,10,10,10,10,10,10,10,10],
+    [10, 9, 6, 5, 1, 4, 5, 7, 8, 12,14,16,18,19,25],
+    [30, 32, 34, 35, 36, 37, 36, 33, 34,33,30,25,22,18,16],
+    ];
+
+function makeconsecutive(data){
+  for (var i=1;i<data.length;i++) {
+    for(var j=0;j<15; j++) {
+     data[i][j] += data[i-1][j] + 2;
+    }
+  }
+  return data;
+}
+data = makeconsecutive(data);
+
+  var linegraph3 =
+  new Ico.StackGraph($('stackgraph'),
+    {
+      zon: data[2],
+      wind:data[1],
+      hr:data[0]
+    },
+    {
+      curve_amount: 10,
+      colours: { zon: '#e2b974',wind:'#4a7fb9',hr:'#db5050'},
+      labels: ['12:00','','13:00','','14:00','','15:00','','16:00','','17:00','','18:00','','19:00'],
+      meanline: false,
+      vertical_label_unit:"€",
+      grid: true,
+      datalabels:{zon:"Zonneenergie",wind:"Windenergie",hr:"HR-ketel"}
+    });
+
+var bargraph_5 =
+  new Ico.HorizontalBarGraph($('bargraph'),
+    [16,12,15,21,26,33],
+    {
+       labels: ['Flatscreen', 'Wasmachine', 'TV2', 'Computer 2', 'Computer 1', 'Droger'],
+       colour: '#89b78c',
+       grid:true,
+       vertical_label_unit:"KWH",
+       horizontal_rounded:true,
+       datalabels: {one:['2 uur, 12 min', '1 uur, 10 min', '4 uur, 23 min', '3 uur, 45 min','45 min', '1 uur, 10 min']},
+    });
+var sparkline = new Ico.SparkLine($('sparkline'), [0,0,5,5,5,0,0,0], { width: 90, height: 20, colour: "#ea796d"  });
+   </script>
+
+
+</body>
+</html>
