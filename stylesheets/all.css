@@ -78,6 +78,7 @@ form legend{font-size:1.1666em;font-weight:700;left:0;margin:0;padding:0}
   position:relative;
   width:800px;
   height:480px;
+  overflow:hidden;
   margin:10px auto;
   border:30px solid #eee;
   border-bottom:120px solid #eee;
@@ -178,8 +179,13 @@ form legend{font-size:1.1666em;font-weight:700;left:0;margin:0;padding:0}
   position:absolute;
   right:18px;
   top:25px;
-  height:40px;
+  height:34px;
   width:320px;
+}
+.dashboard .wireframe .topbar .barchart {
+  border:2px solid #333;
+  -moz-border-radius:14px;
+  -webkit-border-radius:14px;
 }
 .wireframe .topbar .barchart div {
   float:left;
@@ -226,7 +232,7 @@ form legend{font-size:1.1666em;font-weight:700;left:0;margin:0;padding:0}
 .wireframe .main h1 a span,
 .wireframe .main h2 span {
   font-size:1.2em;
-  background:#e2b974;
+  background:#77ff77;
   -moz-border-radius:5px;
   -webkit-border-radius:5px;
   padding:4px 5px;

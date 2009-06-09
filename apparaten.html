@@ -12,7 +12,7 @@
   <div class="screen wireframe">
 
     <div class="main">
-      <div id="maingraph"></div>
+      <div id="maingraph" style="height:250px;margin-top:50px"></div>
 	  <h1><a href="#" class="toggle">Verbruik apparaten: <span>&euro;123,-</span></a></h1>
     </div><!-- main -->
 
@@ -38,7 +38,7 @@
     </div><!-- bar -->
   </div>
 
-  <script> 	
+  <script>
 	var bargraph =
 		new Ico.HorizontalBarGraph($('maingraph'),
 		[12,15,16,21,26,33],
@@ -46,14 +46,13 @@
 			font_size: 14,
 			labels: ['PC vader', 'PC Kind', 'Televisie', ' Keukenapparatuur', 'Wasmachine', 'Droger'],
 			grid:true,
-			vertical_label_unit:",- €",
+			vertical_label_unit:"€",
 			horizontal_rounded:true,
-			background_colour: "#eeeeee",
+			plot_padding:20,
+			background_colour: "#ffffff",
 			colour:"#89b78c",
-			label_colour:"#89b78c",
-			hover_colour:"#89b78c"
 			});
-		
+
 	var sparkline = new Ico.SparkLine($('sparkline'), [10,12,14,10,0,7,8,9,0,5,6,0,3,0,10,12], {width: 320, height:40, colour: "#000000"  });
 
 	document.getElementsByClassName("info")[0].onclick = function() {window.location ="index.html"};

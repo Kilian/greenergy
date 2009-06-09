@@ -7,7 +7,7 @@
   <script src="scripts/prototype.js" type="text/javascript"></script>
   <script src="scripts/raphael.js" type="text/javascript"></script>
   <script src="scripts/ico.js" type="text/javascript"></script>
-  
+
   <script src="scripts/yui-utilities.js" type="text/javascript"></script>
   <script src="scripts/yui-script.js" type="text/javascript"></script>
 
@@ -16,7 +16,7 @@
   <div class="screen wireframe">
 
     <div class="main">
-      <div id="maingraph"></div>
+      <div id="maingraph" style="height:300px;"></div>
       <h1><a href="#" class="toggle">Huidig profiel: <span>weekend</span><span>werkdag</span><span>avond</span></a></h1>
     </div><!-- main -->
 
@@ -42,12 +42,12 @@
     </div><!-- bar -->
   </div>
 
-  <script> 	
+  <script>
 	var stackgraph =
 		new Ico.StackGraph($('maingraph'),
-		[15, 15, 15, 15, 15, 15, 15, 17.5, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20],
+		[15, 15, 15, 17.5, 20, 20, 20, 20, 20, 14],
 		{
-			labels: ['', '02:00', '', '04:00', '', '06:00', '', '08:00', '', '10:00', '', '12:00', '', '14:00', '', '16:00', '', '18:00', '', '20:00', '', '22:00', '', '24:00'],
+			labels: ['06:00', '', '10:00', '', '14:00', '','18:00', '', '20:00', '', '22:00', '', '24:00'],
 			meanline: false,
 			markers: 'circle',
 			marker_size:10,
@@ -55,15 +55,12 @@
 			plot_padding: 0,
 			show_vertical_labels: true,
 			curve_amount: 20,
-			background_colour: "#eeeeee",
+			background_colour: "#fff",
 			draw_axis: false,
 			colours: 	{one: '#af4545'},
 			label_colour:"#333333",
-			hover_colour:"#af4545",
-			vertical_label_unit:"°C",
-			datalabels: {one:'verplaats punten om temperatuur aan te passen'}
 	});
-		
+
 	var sparkline = new Ico.SparkLine($('sparkline'), [10,12,14,10,0,7,8,9,0,5,6,0,3,0,10,12], {width: 320, height: 40,colour: "#000000"  });
 	document.getElementsByClassName("info")[0].onclick = function() {window.location ="index.html"};
    </script>

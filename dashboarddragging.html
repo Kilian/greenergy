@@ -51,19 +51,21 @@
 var linegraph3 =
   new Ico.LineGraph($('maingraph'),
     {
-      up:  [10,12,14,10, 0, 0, 0, 0, 0, 5, 6, 0, 0, 0, 10, 12],
-      down:[ 0, 0, 0, 0, 0,-7,-8,-9, 0, 0, 0, 0,-3, 0,  0,  0],
-      zero:[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+      up:  [10,12,14,10, 0, 0, 0, 0, 0, 5, 6, 0, 0, 0, 10],
+      down:[ 0, 0, 0, 0, 0,-7,-8,-9, 0, 0, 0, 0,-3, 0,  0],
+      zero:[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
     },
     {
       curve_amount: 10,
+      font_size:14,
       colours: { up: '#00ff00',down:'#ff0000',zero:'#000000'},
-      labels: ['20 mei','','','','','','','','','','','','','','','27 mei'],
+      labels: ['20 mei','','21 mei','','22 mei','','23 mei','','24 mei','','25 mei','','26 mei','','27 mei'],
       meanline: false,
       show_vertical_labels:true,
       vertical_label_unit:"€",
       grid: true
     });
+
   document.getElementsByClassName("info")[0].onclick = function() {window.location ="index.html"};
    </script>
 </body>
