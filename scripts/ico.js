@@ -429,7 +429,7 @@ Ico.BaseGraph = Class.create(Ico.Base, {
       coords.unshift([coords[0][0],y_offset]);
       coords.push([coords[coords.length-1][0],y_offset]);
     } else {
-      var cursor = this.paper.path({stroke: colour, 'stroke-width': '5px'});
+      var cursor = this.paper.path({stroke: colour, 'stroke-width': '5px',fill:'#ddf'});
     }
 
     if(this.options["datalabels"]) {
